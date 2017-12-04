@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 31fb2aa4cfa9fd54ab6d5047dc74c3d8
+timeCreated: 1512191143
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - PlayerModel: {instanceID: 0}
+  - RaceDiana: {fileID: 1876168156932916, guid: e4ddb2f6599d7c140b739026af4cc338,
+      type: 2}
+  - BattleDiana: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
