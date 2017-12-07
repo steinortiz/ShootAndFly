@@ -96,7 +96,5 @@ public class PlayerComponents : MonoBehaviour {
 			Destroy (this.gameObject.GetComponent<PlayerEffectController> ().ExplotionRender);
 		}
 		this.transform.SetPositionAndRotation(Cannon.transform.position, Quaternion.Euler(0f, Cannon.transform.eulerAngles.y,0f));
-
-
 	}
 }

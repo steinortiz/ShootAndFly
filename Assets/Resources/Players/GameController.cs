@@ -87,6 +87,7 @@ public class GameController : MonoBehaviour {
 				TurnManager.GetComponent<TurnController> ().Nadie.GetComponent<Text> ().text = "";
 				for (int i = 0; i < PlayersNumber; i++) {
 					PlayerPoints [i] = PlayerPoints [i] + puntos [i];
+					puntos [i] = 0;
 				}
 			}
 
@@ -95,7 +96,8 @@ public class GameController : MonoBehaviour {
 				Sun.GetComponent<SunThePositioner> ().Players [i].GetComponent<PlayerMovement> ().flyMovement = false;
 				TurnManager.GetComponent<TurnController> ().camarita.GetComponent<Camera> ().enabled = true;
 				TurnManager.GetComponent<TurnController> ().Canvasito.GetComponent<Canvas> ().enabled = true;
-				TurnManager.GetComponent<TurnController> ().pointstext [i].GetComponent<Text> ().text = PlayerPoints [i].ToString ();
+				int puntacos = (int)PlayerPoints [i];
+				TurnManager.GetComponent<TurnController> ().pointstext [i].GetComponent<Text> ().text = puntacos.ToString ();
 				if (PlayerPoints [i] >= Meta) {
 					EndGame (i);
 				}

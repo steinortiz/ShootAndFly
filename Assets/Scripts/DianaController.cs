@@ -19,7 +19,9 @@ public class DianaController : MonoBehaviour {
 
 	void OnCollisionEnter(Collision evento){
 		float Suma = 100 + evento.gameObject.GetComponentInParent<PlayerComponents> ().speed;
-		GameController.control.puntos [evento.gameObject.GetComponentInParent<PlayerComponents> ().PlayerType-1] = Suma;
+		GameController.control.puntos [evento.gameObject.GetComponentInParent<PlayerComponents> ().PlayerType - 1] = 0;
+		GameController.control.puntos [evento.gameObject.GetComponentInParent<PlayerComponents> ().PlayerType - 1] = Suma;
+
 		GameController.control.Positions += 1;
 	}
 

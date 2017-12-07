@@ -46,5 +46,6 @@ public class ArrowController : MonoBehaviour {
 		switcher= false;
 		this.GetComponent<RectTransform>().position = new Vector3(0f,0f,0f);
 		Active = false;
+		texto.GetComponent<Text> ().text = "0";
 	}
 }
