@@ -5,9 +5,10 @@ using UnityEngine;
 public class BuildEfect : MonoBehaviour {
 
 	public bool IsBoomb;
-	public bool Kill=false;
-	public GameObject Objetivo;
-	public int objetos=0;
+	public bool IsReady =false;
+	public float radio;
+	public Collider[] objetos;
+	public GameObject Boom;
 
 	// Use this for initialization
 	void Start () {
@@ -19,20 +20,23 @@ public class BuildEfect : MonoBehaviour {
 	}
 
 	public void AplyEffect(){
+		IsReady = true;
 		if (IsBoomb) {
-			Kill = true;
+
+			boomb ();
 		}
 	}
 
-	void OnTiggerEnter(Collider other){
-		Objetivo = other.gameObject;
-		if (other == null) {
-			if (Kill) {
-				Destroy (this.gameObject);
+
+	public void boomb(){
+		Instantiate (Boom, transform.position, transform.rotation);
+		Collider[] objetos = Physics.OverlapSphere (transform.position, radio);
+		foreach (Collider objeto in objetos) {
+			if (objeto.gameObject.CompareTag("build") && objeto.GetComponent<BuildEfect>().IsReady){
+				Destroy(objeto.gameObject);
 			}
 		}
-		if (Kill) {
-			Destroy (Objetivo);
-		}
+		Destroy(this.gameObject);
 	}
+		
 }

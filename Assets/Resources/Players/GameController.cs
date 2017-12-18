@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour {
 	// Turn Propieties
 
 	public bool turn;
+	private float timmer = 3f;
 	public int ReadyCollition;
 	public int playersReady;
 
@@ -74,6 +75,9 @@ public class GameController : MonoBehaviour {
 		if (playersReady == PlayersNumber) {
 			playersReady = 0;
 			TurnManager.GetComponent<TurnController> ().camarita.GetComponent<Camera> ().enabled = false;
+			for (int i = 0; i < PlayersNumber; i++) {
+				Sun.GetComponent<SunThePositioner> ().Players [i].GetComponent<shootController> ().CanShoot = true;
+			}
 		}
 
 		if (ReadyCollition == PlayersNumber) {
@@ -82,6 +86,9 @@ public class GameController : MonoBehaviour {
 			if (Positions == PlayersNumber) {
 				Positions = 0;
 				TurnManager.GetComponent<TurnController> ().Nadie.GetComponent<Text> ().text = "Muy facil, Nadie Gana Puntos";
+				for (int i = 0; i < PlayersNumber; i++) {
+					puntos [i] = 0;
+				}
 			} else {
 				Positions = 0;
 				TurnManager.GetComponent<TurnController> ().Nadie.GetComponent<Text> ().text = "";

@@ -27,11 +27,30 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		timer -= Time.deltaTime;
-		if (timer < 2f && timer >1f) {
-			this.GetComponent<shootController> ().CanShoot = true;
-		}
 		if (buildmovement) {
+			float Bx = this.gameObject.GetComponent<PlayerComponents> ().Build.transform.position.x;
+			float By = this.gameObject.GetComponent<PlayerComponents> ().Build.transform.position.y;
+			float Bz = this.gameObject.GetComponent<PlayerComponents> ().Build.transform.position.z;
+			if (Bx > 200f || Bx < -200f) {
+				if (Bx > 200f ) {
+					this.gameObject.GetComponent<PlayerComponents> ().Build.transform.position = new Vector3 (200f, By, Bz);
+				}
+				if (Bx < -200f ) {
+					this.gameObject.GetComponent<PlayerComponents> ().Build.transform.position = new Vector3 (-200f, By, Bz);
+				}
+			}
+			if (By < 0f) {
+				this.gameObject.GetComponent<PlayerComponents> ().Build.transform.position = new Vector3 (Bx, 0f, Bz);
+				
+			}
+			if (Bz > 200f || Bz < -200f) {
+				if (Bz > 200f ) {
+					this.gameObject.GetComponent<PlayerComponents> ().Build.transform.position = new Vector3 (Bx, By, 200);
+				}
+				if (Bz < -200f ) {
+					this.gameObject.GetComponent<PlayerComponents> ().Build.transform.position = new Vector3 (Bx, By, -200);
+				}
+			}
 			this.GetComponent<shootController> ().CanShoot = false;
 			buildChange();
 			buildupdown ();
